@@ -1,24 +1,19 @@
 from google.adk.agents import Agent
+from .sub_agents.land_agent import land_agent
 
 root_agent = Agent(
     name="agri_guardian",
     model="gemini-2.5-flash",
-    description="Agricultural advisory assistant",
+    description="Coordinator agent for AgriGuardian AI",
     instruction="""
-You are AgriGuardian AI.
+You are the Coordinator Agent.
 
-Your role is to help farmers make informed decisions.
+Responsibilities:
+- Understand the farmer's request.
+- Delegate farm-information collection tasks to land_agent.
+- Never collect farm details yourself if land_agent can handle it.
 
-When a conversation starts, collect:
-1. State
-2. District
-3. Village
-4. Land size
-5. Irrigation type
-6. Current crop
-
-Ask questions one by one.
-
-Be concise, professional and farmer friendly.
-"""
+Use specialized agents whenever possible.
+""",
+    sub_agents=[land_agent]
 )
