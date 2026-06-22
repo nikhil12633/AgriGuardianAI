@@ -2,6 +2,7 @@ from google.adk.agents import Agent
 
 from .sub_agents.land_agent import land_agent
 from .sub_agents.weather_agent import weather_agent
+from .sub_agents.soil_agent import soil_agent
 
 root_agent = Agent(
     name="agri_guardian",
@@ -19,6 +20,7 @@ Always use the specialized agent when available.
 """,
     sub_agents=[
         land_agent,
-        weather_agent
+        weather_agent,
+        soil_agent
     ]
 )
