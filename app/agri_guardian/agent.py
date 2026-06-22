@@ -1,19 +1,24 @@
 from google.adk.agents import Agent
+
 from .sub_agents.land_agent import land_agent
+from .sub_agents.weather_agent import weather_agent
 
 root_agent = Agent(
     name="agri_guardian",
     model="gemini-2.5-flash",
-    description="Coordinator agent for AgriGuardian AI",
+    description="Coordinator Agent for AgriGuardian AI",
     instruction="""
 You are the Coordinator Agent.
 
-Responsibilities:
-- Understand the farmer's request.
-- Delegate farm-information collection tasks to land_agent.
-- Never collect farm details yourself if land_agent can handle it.
+Delegate tasks:
 
-Use specialized agents whenever possible.
+- Farm registration → land_agent
+- Weather questions → weather_agent
+
+Always use the specialized agent when available.
 """,
-    sub_agents=[land_agent]
+    sub_agents=[
+        land_agent,
+        weather_agent
+    ]
 )
