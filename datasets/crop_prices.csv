@@ -1,8 +1,31 @@
-crop,price_per_quintal
-Tur,8900
-Green Gram,7500
-Soybean,5300
-Maize,2400
-Sugarcane,3400
-Cotton,7200
-Groundnut,6800
+crop,season,price_per_quintal,soil_type,water_requirement,profit_score
+Tur,Kharif,8900,Black,Medium,9
+Green Gram,Kharif,7500,Red,Low,8
+Black Gram,Kharif,7200,Black,Low,8
+Soybean,Kharif,5300,Black,Medium,7
+Maize,Kharif,2400,Loamy,Medium,5
+Sugarcane,All,3400,Black,High,6
+Cotton,Kharif,7200,Black,Medium,8
+Groundnut,Kharif,6800,Sandy,Low,7
+Paddy,Kharif,2600,Clay,High,5
+Jowar,Kharif,3100,Black,Low,6
+Bajra,Kharif,2800,Sandy,Low,6
+Ragi,Kharif,3500,Red,Medium,6
+Sesame,Kharif,9800,Sandy,Low,9
+Red Gram,Kharif,8500,Black,Medium,8
+Castor,Kharif,7200,Black,Low,7
+Turmeric,Kharif,9800,Red,High,10
+Ginger,Kharif,8500,Loamy,High,9
+Sunflower,Rabi,6200,Black,Low,7
+Mustard,Rabi,6100,Loamy,Medium,7
+Chickpea,Rabi,5600,Black,Low,8
+Horse Gram,Rabi,5000,Sandy,Low,7
+Wheat,Rabi,2900,Loamy,Medium,6
+Garlic,Rabi,12500,Loamy,Medium,10
+Potato,Rabi,1900,Loamy,High,5
+Onion,Rabi,1800,Black,Medium,5
+Coriander,Rabi,7500,Loamy,Low,8
+Cumin,Rabi,13500,Sandy,Low,10
+Fenugreek,Rabi,6200,Loamy,Low,7
+Tomato,All,2200,Loamy,High,5
+Cowpea,All,5700,Red,Low,7

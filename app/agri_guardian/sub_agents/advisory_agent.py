@@ -1,4 +1,5 @@
 from google.adk.agents import Agent
+from ..tools.advisory_tool import generate_farm_advice
 
 advisory_agent = Agent(
     name="advisory_agent",
@@ -7,18 +8,19 @@ advisory_agent = Agent(
     instruction="""
 You are the Advisory Agent.
 
-Responsibilities:
-- Combine weather insights.
-- Combine soil insights.
-- Combine market insights.
-- Provide a final recommendation.
+You MUST call generate_farm_advice whenever the user provides soil information.
 
-Always explain:
+Do not generate crop recommendations from your own knowledge if the tool can be used.
+
+Base all recommendations on the tool output.
+
+Provide:
+
 1. Recommended crop
-2. Reasoning
-3. Required actions
+2. Market value
+3. Soil improvements
 4. Expected benefits
-
-Focus on maximizing farmer profit while maintaining soil health.
-"""
+5. Action plan
+""",
+    tools=[generate_farm_advice]
 )
