@@ -1,147 +1,143 @@
-# AgriGuardian AI 🌾
+# AgriGuardianAI
 
-## Overview
-
-AgriGuardian AI is a multi-agent agricultural decision support system built using Google's Agent Development Kit (ADK).
-
-The system helps farmers make informed decisions by combining:
-
-* Farm registration and profiling
-* Weather monitoring
-* Soil analysis
-* Crop market analysis
-* Intelligent farming recommendations
-
-The objective is to improve crop productivity, profitability, and sustainable farming practices.
+AgriGuardianAI is a Google Agent Development Kit (ADK) based multi-agent agricultural advisory system designed to help farmers make informed decisions using weather, soil, and market analysis.
 
 ---
 
 ## Features
 
-### Land Agent
-
-Collects and validates:
-
-* State
-* District
-* Village
-* Land size
-* Irrigation type
-* Current crop
-
-### Weather Agent
-
-Provides:
-
-* Current weather conditions
-* Temperature
-* Humidity
-* Farming precautions
-
-### Soil Agent
-
-Analyzes:
-
-* Soil pH
-* Nitrogen level
-* Phosphorus level
-* Potassium level
-
-Provides soil improvement recommendations.
-
-### Market Agent
-
-Analyzes crop price data and identifies profitable crops.
-
-### Advisory Agent
-
-Combines:
-
-* Soil information
-* Weather information
-* Market information
-
-and generates farming recommendations.
+- Multi-agent architecture using Google ADK
+- Coordinator agent for intelligent routing
+- Weather analysis using OpenWeather API
+- Soil health analysis
+- Crop profitability analysis
+- Agricultural advisory generation
+- MCP Weather Server integration
+- Evaluation framework
+- Unit and integration testing
 
 ---
 
 ## Architecture
 
-Coordinator Agent
+AgriGuardianAI follows a Coordinator/Sub-Agent architecture.
 
-* Land Agent
-* Weather Agent
-* Soil Agent
-* Market Agent
-* Advisory Agent
+Agents:
 
-Supporting Tools:
+- Coordinator Agent
+- Land Agent
+- Weather Agent
+- Soil Agent
+- Market Agent
+- Advisory Agent
 
-* Weather Tool
-* Soil Analysis Tool
-* Market Analysis Tool
+Tools:
 
-External Services:
-
-* OpenWeather API
-* MCP Weather Server
-
----
-
-## Technologies Used
-
-* Python
-* Google ADK
-* Gemini 2.5 Flash
-* MCP (Model Context Protocol)
-* OpenWeather API
-* GitHub
-
----
-
-## Security
-
-* API keys stored in `.env`
-* No credentials committed to GitHub
-* Modular tool architecture
+- Weather Tool
+- Soil Tool
+- Market Tool
+- Advisory Tool
 
 ---
 
 ## Project Structure
 
-app/agri_guardian/
+app/
+agri_guardian/
+├── agent.py
+├── models/
+├── sub_agents/
+└── tools/
 
-* agent.py
-* models/
-* sub_agents/
-* tools/
-
-mcp/
-
-* weather_mcp_server.py
-
-datasets/
-
-* crop_prices.csv
+tests/
+├── unit/
+├── integration/
+└── eval/
 
 docs/
 
-* ROADMAP.md
-* TASKS.md
-* ARCHITECTURE.md
+datasets/
+
+
 
 ---
 
-## Future Enhancements
+## Multi-Agent Workflow
 
-* Government soil database integration
-* Real-time crop market prices
-* Fertilizer recommendation engine
-* Pest and disease prediction
-* Satellite and rainfall analysis
+Farmer Query
+
+↓
+
+Coordinator Agent
+
+↓
+
+Land Agent
+Weather Agent
+Soil Agent
+Market Agent
+
+↓
+
+Advisory Agent
+
+↓
+
+Final Recommendation
 
 ---
 
-## Author
+## Evaluation
+
+Current evaluation metrics:
+
+- Agent Routing Accuracy
+- Tool Execution Success
+- Response Completeness
+- Response Time
+
+Current score:
+
+- Agent Routing Accuracy: 100%
+- Tool Success: 100%
+- Response Completeness: 100%
+
+---
+
+## Unit Tests
+pytest tests/unit -v
+
+Results:
+20 passed
+
+
+---
+
+## Technologies Used
+
+- Google ADK
+- Gemini 2.5 Flash
+- Python
+- FastAPI
+- OpenWeather API
+- MCP Server
+- Pytest
+
+---
+
+## Future Improvements
+
+- Persistent farm profiles
+- Weather forecasting
+- Historical market trends
+- Irrigation recommendations
+- Fertilizer recommendations
+- Frontend dashboard
+- Multi-language support
+
+---
+
+## Authors
 
 Nikhil
+AgriGuardianAI Capstone Project

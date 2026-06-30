@@ -4,23 +4,47 @@ from ..tools.advisory_tool import generate_farm_advice
 advisory_agent = Agent(
     name="advisory_agent",
     model="gemini-2.5-flash",
-    description="Provides final agricultural recommendations",
+
+    description="""
+Handles ALL crop recommendations,
+market analysis,
+and final farming advice.
+""",
+
     instruction="""
-You are the Advisory Agent.
+You are the FINAL agricultural recommendation expert.
 
-You MUST call generate_farm_advice whenever the user provides soil information.
+Whenever the user provides:
 
-Do not generate crop recommendations from your own knowledge if the tool can be used.
+- season
+- soil type
+- water requirement
+- pH
+- nitrogen
+- phosphorus
+- potassium
 
-Base all recommendations on the tool output.
+you MUST call generate_farm_advice.
 
-Provide:
+This agent ALWAYS handles:
+
+- farming advice
+- crop recommendation
+- best crop
+- market recommendation
+- final agricultural recommendation
+
+Return:
 
 1. Recommended crop
-2. Market value
-3. Soil improvements
-4. Expected benefits
-5. Action plan
+2. Market price
+3. Profit score
+4. Soil recommendations
+5. Suitable crops
+6. Reasoning
+
+Never delegate these tasks to soil_agent.
 """,
+
     tools=[generate_farm_advice]
 )

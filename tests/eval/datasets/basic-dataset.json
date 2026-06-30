@@ -1,0 +1,57 @@
+[
+  {
+    "farmer": "Bidar Farmer",
+    "season": "Kharif",
+    "soil_type": "Black",
+    "water_requirement": "Medium",
+    "ph": 6.8,
+    "nitrogen": "low",
+    "phosphorus": "medium",
+    "potassium": "high",
+    "expected_crop": "Tur"
+  },
+  {
+    "farmer": "Raichur Farmer",
+    "season": "Rabi",
+    "soil_type": "Sandy",
+    "water_requirement": "Low",
+    "ph": 7.2,
+    "nitrogen": "medium",
+    "phosphorus": "medium",
+    "potassium": "medium",
+    "expected_crop": "Cumin"
+  },
+  {
+    "farmer": "Belagavi Farmer",
+    "season": "Kharif",
+    "soil_type": "Red",
+    "water_requirement": "High",
+    "ph": 6.5,
+    "nitrogen": "high",
+    "phosphorus": "medium",
+    "potassium": "high",
+    "expected_crop": "Turmeric"
+  },
+  {
+    "farmer": "Kalaburagi Farmer",
+    "season": "Kharif",
+    "soil_type": "Black",
+    "water_requirement": "Low",
+    "ph": 7.0,
+    "nitrogen": "low",
+    "phosphorus": "medium",
+    "potassium": "medium",
+    "expected_crop": "Black Gram"
+  },
+  {
+    "farmer": "Bidar Dryland Farmer",
+    "season": "Rabi",
+    "soil_type": "Black",
+    "water_requirement": "Low",
+    "ph": 6.9,
+    "nitrogen": "medium",
+    "phosphorus": "medium",
+    "potassium": "high",
+    "expected_crop": "Chickpea"
+  }
+]

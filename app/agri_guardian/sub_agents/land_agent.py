@@ -2,7 +2,7 @@ from google.adk.agents import Agent
 
 land_agent = Agent(
     name="land_agent",
-    model="gemini-2.5-flash",
+    model="gemini-2.0-flash-lite",
     description="Collects and validates farm information",
     instruction="""
 You are the Land Agent.

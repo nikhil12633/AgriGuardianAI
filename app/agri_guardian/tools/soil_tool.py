@@ -1,17 +1,64 @@
 def analyze_soil(
-    ph: float,
-    nitrogen: str,
-    phosphorus: str,
-    potassium: str
+    ph,
+    nitrogen,
+    phosphorus,
+    potassium,
+    soil_type=None,
+    season=None
 ):
     recommendations = []
     suitable_crops = []
 
-    # pH Analysis
+    # Normalize
+    season = str(season).lower() if season else ""
+    soil = str(soil_type).lower() if soil_type else ""
+
+    # Season recommendations
+    if season == "kharif":
+        suitable_crops.extend([
+            "Cotton",
+            "Soybean",
+            "Tur",
+            "Jowar",
+            "Groundnut"
+        ])
+
+    elif season == "rabi":
+        suitable_crops.extend([
+            "Wheat"
+        ])
+
+    # Soil recommendations
+    if "black" in soil:
+        suitable_crops.extend([
+            "Cotton",
+            "Soybean",
+            "Tur",
+            "Groundnut",
+            "Jowar"
+        ])
+
+    elif "red" in soil:
+        suitable_crops.extend([
+            "Tur",
+            "Green Gram",
+            "Black Gram",
+            "Soybean",
+            "Groundnut"
+        ])
+
+    elif "loamy" in soil:
+        suitable_crops.extend([
+            "Tomato",
+            "Wheat"
+        ])
+
+    # pH analysis
     if ph < 6:
         recommendations.append(
-            "Soil is acidic. Consider adding agricultural lime."
+            "Soil is acidic. Apply agricultural lime."
         )
+
         suitable_crops.extend([
             "Groundnut",
             "Soybean",
@@ -20,40 +67,52 @@ def analyze_soil(
 
     elif ph > 8:
         recommendations.append(
-            "Soil is alkaline. Consider gypsum treatment."
+            "Soil is alkaline. Apply gypsum."
         )
+
         suitable_crops.extend([
-            "Barley",
-            "Cotton",
-            "Mustard"
+            "Cotton"
         ])
 
     else:
         recommendations.append(
-            "Soil pH is suitable for most crops."
+            "Soil pH is suitable."
         )
-        suitable_crops.extend([
-            "Maize",
-            "Wheat",
-            "Sugarcane"
-        ])
 
-    # Nutrient Analysis
-
+    # Nutrients
     if nitrogen.lower() == "low":
         recommendations.append(
-            "Nitrogen deficiency detected. Apply compost or nitrogen fertilizers."
+            "Apply nitrogen fertilizers or compost."
         )
 
     if phosphorus.lower() == "low":
         recommendations.append(
-            "Phosphorus deficiency detected. Apply phosphate fertilizers."
+            "Apply phosphate fertilizers."
         )
 
     if potassium.lower() == "low":
         recommendations.append(
-            "Potassium deficiency detected. Apply potash fertilizers."
+            "Apply potash fertilizers."
         )
+
+    # Remove duplicates
+    priority = [
+    "Cotton",
+    "Tur",
+    "Soybean",
+    "Groundnut",
+    "Jowar",
+    "Green Gram",
+    "Black Gram",
+    "Wheat",
+    "Tomato"
+    ]
+
+    suitable_crops = [
+    	crop
+    	for crop in priority
+    	if crop in suitable_crops
+    ]
 
     return {
         "ph": ph,
@@ -62,4 +121,4 @@ def analyze_soil(
         "potassium": potassium,
         "recommendations": recommendations,
         "suitable_crops": suitable_crops
-    }
+       }

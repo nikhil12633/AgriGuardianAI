@@ -3,7 +3,7 @@ from ..tools.market_tool import get_best_crop
 
 market_agent = Agent(
     name="market_agent",
-    model="gemini-2.5-flash",
+    model="gemini-2.0-flash-lite",
     description="Analyzes crop market prices and recommends profitable crops",
     instruction="""
 You are the Market Agent.

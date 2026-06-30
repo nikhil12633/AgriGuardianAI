@@ -3,34 +3,43 @@ from .soil_tool import analyze_soil
 
 
 def generate_farm_advice(
-    season: str,
-    soil_type: str,
-    water_requirement: str,
-    ph: float,
-    nitrogen: str,
-    phosphorus: str,
-    potassium: str
+    season,
+    soil_type,
+    water_requirement,
+    ph,
+    nitrogen,
+    phosphorus,
+    potassium
 ):
-    """
-    Generates final farming advice by combining
-    soil analysis and market intelligence.
-    """
 
     soil = analyze_soil(
         ph,
         nitrogen,
         phosphorus,
-        potassium
+        potassium,
+        soil_type,
+        season
     )
 
     market = get_best_crop(
         season=season,
         soil_type=soil_type,
-        water_requirement=water_requirement
+        water_requirement=water_requirement,
+        candidate_crops=soil["suitable_crops"]
     )
 
     if "error" in market:
-        return market
+
+        return {
+            "error":
+                market["error"],
+
+            "soil_recommendations":
+                soil["recommendations"],
+
+            "soil_suitable_crops":
+                soil["suitable_crops"]
+        }
 
     return {
         "recommended_crop":
@@ -45,10 +54,13 @@ def generate_farm_advice(
         "soil_recommendations":
             soil["recommendations"],
 
+        "soil_suitable_crops":
+            soil["suitable_crops"],
+
         "reasoning": [
-            f"Suitable for {season} season",
-            f"Suitable for {soil_type} soil",
-            f"Requires {water_requirement} water",
-            "Selected using profitability and market price"
+            f"Season: {season}",
+            f"Soil: {soil_type}",
+            f"Water: {water_requirement}",
+            "Selected using soil suitability and market profitability"
         ]
     }

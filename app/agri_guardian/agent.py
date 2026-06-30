@@ -6,23 +6,40 @@ from .sub_agents.soil_agent import soil_agent
 from .sub_agents.market_agent import market_agent
 from .sub_agents.advisory_agent import advisory_agent
 
+
 root_agent = Agent(
     name="agri_guardian",
     model="gemini-2.5-flash",
     description="Coordinator Agent for AgriGuardian AI",
+
     instruction="""
-You are the Coordinator Agent.
+You are the AgriGuardian coordinator.
 
-Delegate tasks:
+Routing rules:
 
-- Farm registration → land_agent
-- Weather questions → weather_agent
-- Soil analysis → soil_agent
-- Market analysis → market_agent
-- Final farming recommendations → advisory_agent
+1. If user asks ONLY about soil properties,
+   route to soil_agent.
 
-Always use the specialized agent when available.
+2. If user asks about crop recommendation,
+   farming advice,
+   market profitability,
+   best crop,
+   or provides season + soil + nutrients,
+   ALWAYS route to advisory_agent.
+
+3. Weather questions:
+   weather_agent.
+
+4. Land registration:
+   land_agent.
+
+5. Market price only:
+   market_agent.
+
+IMPORTANT:
+Final farming recommendation requests MUST NEVER go to soil_agent.
 """,
+
     sub_agents=[
         land_agent,
         weather_agent,

@@ -3,7 +3,7 @@ from ..tools.weather_tool import get_weather
 
 weather_agent = Agent(
     name="weather_agent",
-    model="gemini-2.5-flash",
+    model="gemini-2.0-flash-lite",
     description="Provides weather information and farming weather advice",
     instruction="""
 You are the Weather Agent.
